@@ -1,0 +1,60 @@
+.recipe-of-day {
+    display: flex;
+    flex-direction: row;
+}
+
+.recipe-of-day img{
+   width: 40%;
+   margin: 2rem 0 0 4rem;
+}
+
+.recipe-of-day article {
+    margin: 8rem 5rem 0 2rem;
+}
+
+.recipe-of-day a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.recipe-of-day h2 {
+    color: var(--highlight-color);
+    margin: 0 0 .5rem 0;
+}
+
+.recipe-of-day h1 {
+    font-size: 2rem;
+}
+
+.recipe-of-day h3 {
+    color: darkgray;
+    font-style: italic;
+    margin: 0 0 1rem 0;
+}
+
+@media (width <= 860px) {
+    .recipe-of-day {
+        flex-direction: column;
+    }
+    .recipe-of-day img {
+        display: block;
+        margin: 0 auto;
+        width: 90%;
+    }
+    .recipe-of-day article {
+        margin: 0 auto 0 auto;
+        width: 80%;
+    }
+    .recipe-of-day article h1, .recipe-of-day article h2, .recipe-of-day article h3 {
+        text-align: center;
+    }
+    
+}
+
+@media (width <= 500px) {
+    .recipe-of-day img {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
