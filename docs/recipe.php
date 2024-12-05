@@ -13,7 +13,6 @@ function getFolderPath($recipe) {
     $folder_name = "Recipe_".$no_spaces_combined_title;
     return $folder_name;
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +50,8 @@ function getFolderPath($recipe) {
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
-            $sql = "SELECT id, title, sub_title, protein, cook_time, serving, description, ingredients, steps, image_name FROM recipes WHERE id='1'";
+            $recipeID = $_GET["id"];
+            $sql = "SELECT id, title, sub_title, protein, cook_time, serving, description, ingredients, steps, image_name FROM recipes WHERE id='$recipeID'";
             $result = $conn->query($sql);
             $recipe = $result->fetch_assoc();
             
@@ -107,6 +107,7 @@ function getFolderPath($recipe) {
                 $step_num ++;
             }    
         echo "<div>'";
+    $conn->close();
     ?>
 </body>
 </html>

@@ -27,7 +27,7 @@
     <div class="recipe-of-day">
         <img src="media/spicy-pork-korean-style-high-res.jpg" alt="Spicy Pork & Korean Rice Cakes">
         <article>
-            <a href="docs/recipe.php">
+            <a href="docs/recipe.php?id=6">
                 <h2>Recipe of the day</h2>
                 <h1>Spicy Pork & Korean Rice Cakes</h1>
                 <h3>with Bok Choy</h3>
