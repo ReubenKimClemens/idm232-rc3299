@@ -1,4 +1,4 @@
-.first-section .cooking-info {
+.recipe-section .cooking-info {
     display: flex;
     align-content: start;
 }
@@ -10,38 +10,38 @@
     margin: 0 0 0 6rem;
 }
 
-.first-section {
+.recipe-section {
     padding-top: 2rem;
     display: flex;
     width: 90%;
     flex-direction: row;
 }
 
-.first-section img {
+.recipe-section img {
     width: 50%;
     order: 2;
 }
 
-.first-section-text {
+.recipe-info {
     margin: 1rem 2rem 0 2rem;
     order: 1;
 }
 
-.first-section-text h1 + h2 {
+.recipe-info h1 + h2 {
     color: rgb(147, 146, 146);
     font-style: italic;
     margin: 0 0 2rem 2rem;
 }
 
-.first-section-text h2 + p {
+.recipe-info h2 + p {
     margin-bottom: 2rem;
 }
 
-.first-section-text .labels {
+.recipe-info .labels {
     font-weight: bold;
 }
 
-.first-section-text .cooking-info + hr {
+.recipe-info .cooking-info + hr {
     margin-bottom: 2rem;
 }
 
@@ -70,13 +70,13 @@
 }
 
 @media (width <= 1200px) {
-    .first-section img {
+    .recipe-section img {
         order: 1;
     }
-    .first-section .first-section-text {
+    .recipe-section .recipe-info {
         order: 2;
     }
-    .first-section {
+    .recipe-section{
         flex-direction: column;
     }
     .steps img {
@@ -85,7 +85,7 @@
 }
 
 @media (width <= 900px) {
-    .first-section img {
+    .recipe-section img {
         width: 90%;
     }
     .steps img {
@@ -94,7 +94,7 @@
 }
 
 @media (width <= 600px) {
-    .first-section img {
+    .recipe-section img {
         width: 100%;
     }
     .steps img {
