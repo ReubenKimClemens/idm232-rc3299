@@ -1,3 +1,8 @@
+<?php 
+require_once 'db.php';
+require_once 'functions.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,22 +23,70 @@
                     <input type="text" placeholder="Search for recipes..." name="search">
                 </form>
             </div>
-            <a href="docs/filter.php">
-                <img src="media/search-icon.svg" class="icon" alt="">
-            </a>
+            <form action="docs/filter.php" class="mobile-search-bar">
+                    <input type="text" placeholder="Search for recipes..." name="search">
+            </form>
         </div>
         <hr>
     </header>
+    <a href="docs/help.php" class="help">
+        <img src="images/help-icon.svg" class="icon" alt="">
+    </a>
     <div class="recipe-of-day">
-        <img src="media/spicy-pork-korean-style-high-res.jpg" alt="Spicy Pork & Korean Rice Cakes">
-        <article>
-            <a href="docs/recipe.php?id=6">
-                <h2>Recipe of the day</h2>
-                <h1>Spicy Pork & Korean Rice Cakes</h1>
-                <h3>with Bok Choy</h3>
-                <p>In this crowd-pleasing recipe, a savory and spicy sauce (balanced by a touch of cooling crème fraîche) brings together ground pork, bok choy, and aromatics. Weʼre mixing in delightfully chewy tteok, or rice cakes—a staple of Korean cuisine.</p>
-            </a>
-        </article>
+        <?php
+            $conn = new mysqli($db_server, $db_user, $db_pass, $db_name);
+            
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+            $sql = "SELECT id, title, sub_title, description, image_name FROM recipes WHERE id='32'";
+            $result = $conn->query($sql);
+            $recipe = $result->fetch_assoc();
+
+            $image_path =  "images/".getFolderPath($recipe)."/".$recipe["id"]."-".$recipe["image_name"]."-hero.webp";
+            echo '<img src="' .$image_path. '" alt="' .$recipe["title"]. '">';
+            echo "<article>";
+                
+                    echo "<a href='docs/recipe.php?id=32'>";
+                        echo "<h2>Recipe of the day</h2>";
+                        echo "<h1>".$recipe["title"]."</h1>";
+                        echo "<h3>".$recipe["sub_title"]."</h3>";
+                        echo "<p>".$recipe["description"]."</p>";
+                    echo "</a>";
+                
+            echo "</article>";
+        ?>
+    </div>
+    <div class="dishes-section">
+        <h1>Popular Dishes</h1>
+        <div class="dishes-container">
+            <?php
+                $conn = new mysqli($db_server, $db_user, $db_pass, $db_name);
+
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                $dish_list = [2, 3, 4, 5];
+                foreach ($dish_list as $dish) {
+                    $sql = "SELECT id, title, sub_title, cook_time, serving, image_name FROM recipes where id=$dish";
+                    $result = $conn->query($sql);
+                    $recipe = $result->fetch_assoc();
+                    echo "<div class='dishes-card'>";
+                        echo "<a href='docs/recipe.php?id=$dish'>";
+                            $image_path =  "images/".getFolderPath($recipe)."/".$recipe["id"]."-".$recipe["image_name"]."-hero.webp";
+                            echo '<img src="' .$image_path. '" alt="' .$recipe["title"]. '">';
+                            echo "<h1>". $recipe["title"] ."</h1>";
+                            echo "<h2>". $recipe["sub_title"] ."</h2>";
+                            echo "<p>". $recipe["cook_time"]." min | ". $recipe["serving"]." servings</p>";
+                        echo "</a>";
+                    echo "</div>";
+                }
+            $conn->close();
+            ?>
+        </div>
     </div>
 </body>
 </html>

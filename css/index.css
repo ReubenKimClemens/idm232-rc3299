@@ -1,6 +1,8 @@
 .recipe-of-day {
     display: flex;
     flex-direction: row;
+    width: 70%;
+    
 }
 
 .recipe-of-day img{
@@ -32,7 +34,64 @@
     margin: 0 0 1rem 0;
 }
 
-@media (width <= 860px) {
+.dishes-section {
+    width: 70%;
+    display: flex;
+    margin: 3rem auto 10vw auto;
+    flex-direction: column;
+}
+
+.dishes-section h1 {
+    font-size: 2rem;
+    margin: 0 auto 1rem auto;
+}
+
+.dishes-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 0 0 2rem 0;
+    
+}
+
+.dishes-card {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1rem;
+    width: 23%;
+    text-align: center;
+    background-color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+@media (hover: hover) {
+    .dishes-card:hover {
+        transform: scale(1.025);
+        box-shadow: 1px 0px 10px darkgrey;
+    }
+  }
+.dishes-container img {
+    width: 100%;
+}
+
+.dishes-container a {
+    text-decoration: none;
+    color: black;
+}
+
+.dishes-container h1 {
+    margin: 0.5rem 0 0.1rem 0;
+    font-size: 1.75rem;
+}
+
+.dishes-container h2 {
+    margin: 0 0 1rem 0;
+    color: rgb(102, 102, 102);
+    font-size: 1.25rem;
+}
+
+@media (width <= 1100px) {
     .recipe-of-day {
         flex-direction: column;
     }
@@ -48,10 +107,26 @@
     .recipe-of-day article h1, .recipe-of-day article h2, .recipe-of-day article h3 {
         text-align: center;
     }
-    
+    .dishes-card {
+        width: 48%;
+        margin: 0 0 2rem 0;
+    }
+}
+
+@media (width <= 860px) {
+    .dishes-container {
+        width: 70%;
+    }
+    .dishes-card {
+        width: 100%;
+        margin: 0 0 2rem 0;
+    }
 }
 
 @media (width <= 500px) {
+    .recipe-of-day {
+        width: 100%;
+    }
     .recipe-of-day img {
         display: block;
         margin: 0 auto;
